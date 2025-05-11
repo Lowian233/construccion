@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main className="bg-black min-h-screen font-sans text-white">
       {/* Encabezado principal */}
-      
+    
       <section className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 py-12 px-4 items-center">
         <div>
         <div className="flex justify-center items-center mb-8">
@@ -28,6 +28,7 @@ export default function Home() {
           className="w-72 h-72 object-contain" 
         />
       </div>
+      
          
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Construimos tus ideas<br />con precisión e innovación
@@ -42,6 +43,14 @@ export default function Home() {
           >
             Solicita tu cotización personalizada
           </button>
+          <div className="flex justify-center items-center mb-8">
+        <video 
+          src="/video.mp4"  
+          className="w-full max-w-md aspect-video object-cover rounded-lg shadow-lg border border-gray-700" 
+          controls 
+          poster="/smart.png"
+        />
+      </div>
         </div>
         <div className="flex flex-col items-center">
           {/* Placeholder para Video 1 */}
@@ -103,26 +112,28 @@ export default function Home() {
           <h2 className="text-2xl font-semibold mb-4 text-white">¡Gracias por confiar en nosotros!</h2>
           <p className="text-gray-300 mb-6">Hemos recibido tu solicitud y uno de nuestros asesores se pondrá en contacto contigo lo antes posible para brindarte una cotización a la medida.</p>
           <div className="flex gap-4">
-            <Link href="https://construccioninteligente.co/proyectos/">
+            <Link href="https://www.tiktok.com/@smartconstruccion_?_t=ZS-8wG8AKVsOMK&_r=1">
               <button className="bg-white text-black px-6 py-3 rounded-md font-semibold hover:bg-gray-200 transition cursor-pointer">
                 Ver proyectos realizados
               </button>
             </Link>
-            <button 
-              onClick={() => handleServiceClick('')}
-              className="bg-gray-800 text-white border border-gray-700 px-6 py-3 rounded-md font-semibold hover:bg-gray-700 transition cursor-pointer"
-            >
-              Descargar portafolio
-            </button>
+            
           </div>
         </div>
-      </section>
 
-      <ServiceModal 
+      </section>
+      <footer className="bg-gray-900 text-white py-8">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex justify-center items-center">
+            <div>
+              <Image src="/smart.png" alt="Logo" width={400} height={400} />
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+      
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        selectedService={selectedService}
-      />
     </main>
   );
 }
