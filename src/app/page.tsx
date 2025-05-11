@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ServiceModal from '@/components/ServiceModal';
+
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('');
@@ -45,7 +47,7 @@ export default function Home() {
           <div className="flex justify-center items-center mb-8">
         <video 
           src="/video.mp4"  
-          className="w-full max-w-md aspect-video object-cover rounded-lg shadow-lg border border-gray-700" 
+          className="mt-10 w-full max-w-md aspect-video object-cover rounded-lg shadow-lg border border-gray-700" 
           controls 
           poster="/smart.png"
         />
@@ -132,7 +134,11 @@ export default function Home() {
       </footer>
       
       
+      <ServiceModal
         isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        selectedService={selectedService}
+      />
     </main>
   );
 }
