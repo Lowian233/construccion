@@ -46,7 +46,7 @@ export default function Home() {
         <div className="flex flex-col items-center">
           {/* Placeholder para Video 1 */}
           <div className="w-full aspect-[9/16] bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 text-xl mb-2">
-            <video src="/pauta1.mov" autoPlay muted loop className="w-full h-full object-cover rounded-lg" />
+            <video src="/pauta.mov" autoPlay muted loop className="w-full h-full object-cover rounded-lg" />
           </div>
           <p className="text-center text-gray-400 mt-2">¿Por qué elegir Smart Construcción?</p>
         </div>
