@@ -33,7 +33,11 @@ interface Question {
   question: string;
   field: keyof FormData;
   type: "text" | "email" | "tel" | "select" | "textarea";
-  validation?: any;
+  validation?: {
+    required?: string | boolean;
+    minLength?: { value: number; message: string };
+    pattern?: { value: RegExp; message: string };
+  };
   options?: string[];
   showIf?: (data: FormData) => boolean;
 }
@@ -241,7 +245,7 @@ interface InteractiveFormProps {
 
 const InteractiveForm = ({ initialService }: InteractiveFormProps) => {
   const [step, setStep] = useState(1);
-  const { register, handleSubmit, formState: { errors }, watch, trigger, setValue } = useForm<FormData>({
+  const { register, handleSubmit, formState: { errors }, watch, trigger } = useForm<FormData>({
     defaultValues: {
       tipoServicio: initialService
     }
