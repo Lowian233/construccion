@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import ServiceModal from '@/components/ServiceModal';
+import MetaPixel from '@/components/MetaPixel';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <main className="bg-black min-h-screen font-sans text-white">
+      <MetaPixel />
       {/* Encabezado principal */}
     
       <section className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 py-12 px-4 items-center">
@@ -123,16 +125,7 @@ export default function Home() {
         </div>
 
       </section>
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex justify-center items-center">
-            <div>
-              <Image src="/smart.png" alt="Logo" width={400} height={400} />
-            </div>
-          </div>
-        </div>
-      </footer>
-      
+          
       
       <ServiceModal
         isOpen={isModalOpen}
