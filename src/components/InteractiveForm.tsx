@@ -282,45 +282,56 @@ const InteractiveForm = ({ initialService }: InteractiveFormProps) => {
       }
 
       // Enviar email de notificación
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        {
-          from_name: data.nombre,
-          from_email: data.email,
-          message: `
-            Nuevo formulario recibido:
-            Nombre: ${data.nombre}
-            Email: ${data.email}
-            Teléfono: ${data.telefono || 'No proporcionado'}
-            Tipo de Servicio: ${data.tipoServicio}
-            ${data.tipoServicio === 'Estructuras Metálicas' ? `
-            Área de Estructura: ${data.areaEstructura}
-            Número de Pisos: ${data.numeroPisos}
-            Ciudad: ${data.ciudad}
-            Barrio: ${data.barrio || 'No aplica'}
-            Estrato: ${data.estrato}
-            Tiene Planimetría: ${data.tienePlanimetria}
-            Peticiones Adicionales: ${data.peticionesAdicionales || 'No hay'}
-            ` : ''}
-            ${data.tipoServicio === 'Diseño Arquitectónico' ? `
-            Tipo de Servicio: ${data.tipoServicioArquitectura}
-            Incluir Estudio de Suelos: ${data.incluirEstudioSuelos}
-            Incluir Planos Hidrosanitarios: ${data.incluirPlanosHidrosanitarios}
-            Uso del Proyecto: ${data.usoProyecto}
-            Número de Pisos: ${data.numeroPisos}
-            Área del Lote: ${data.areaLote}
-            ` : ''}
-            ${data.tipoServicio === 'Planimetría' ? `
-            Ciudad: ${data.ciudad}
-            Barrio: ${data.barrio || 'No aplica'}
-            Estrato: ${data.estrato}
-            Cotización Concreto: ${data.cotizacionConcreto}
-            ` : ''}
-          `,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      );
+      console.log('EmailJS Config:', {
+        serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      });
+
+      try {
+        await emailjs.send(
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+          {
+            from_name: data.nombre,
+            from_email: data.email,
+            message: `
+              Nuevo formulario recibido:
+              Nombre: ${data.nombre}
+              Email: ${data.email}
+              Teléfono: ${data.telefono || 'No proporcionado'}
+              Tipo de Servicio: ${data.tipoServicio}
+              ${data.tipoServicio === 'Estructuras Metálicas' ? `
+              Área de Estructura: ${data.areaEstructura}
+              Número de Pisos: ${data.numeroPisos}
+              Ciudad: ${data.ciudad}
+              Barrio: ${data.barrio || 'No aplica'}
+              Estrato: ${data.estrato}
+              Tiene Planimetría: ${data.tienePlanimetria}
+              Peticiones Adicionales: ${data.peticionesAdicionales || 'No hay'}
+              ` : ''}
+              ${data.tipoServicio === 'Diseño Arquitectónico' ? `
+              Tipo de Servicio: ${data.tipoServicioArquitectura}
+              Incluir Estudio de Suelos: ${data.incluirEstudioSuelos}
+              Incluir Planos Hidrosanitarios: ${data.incluirPlanosHidrosanitarios}
+              Uso del Proyecto: ${data.usoProyecto}
+              Número de Pisos: ${data.numeroPisos}
+              Área del Lote: ${data.areaLote}
+              ` : ''}
+              ${data.tipoServicio === 'Planimetría' ? `
+              Ciudad: ${data.ciudad}
+              Barrio: ${data.barrio || 'No aplica'}
+              Estrato: ${data.estrato}
+              Cotización Concreto: ${data.cotizacionConcreto}
+              ` : ''}
+            `,
+          },
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+        );
+      } catch (error) {
+        console.error('Error detallado de EmailJS:', error);
+        throw error;
+      }
 
       setFormSuccess(true);
     } catch (error) {
