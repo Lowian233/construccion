@@ -3,13 +3,6 @@
 import Script from 'next/script';
 import Image from 'next/image';
 
-declare global {
-  interface Window {
-    fbq: any;
-    _fbq: any;
-  }
-}
-
 export default function MetaPixel() {
   return (
     <>
