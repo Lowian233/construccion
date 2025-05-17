@@ -1,6 +1,7 @@
 'use client';
 
 import Script from 'next/script';
+import Image from 'next/image';
 
 declare global {
   interface Window {
@@ -31,13 +32,14 @@ export default function MetaPixel() {
         }}
       />
       <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: 'none' }}
-          src="https://www.facebook.com/tr?id=484313314768592&ev=PageView&noscript=1"
-          alt=""
-        />
+        <div style={{ display: 'none' }}>
+          <Image
+            src="https://www.facebook.com/tr?id=484313314768592&ev=PageView&noscript=1"
+            alt="Facebook Pixel"
+            width={1}
+            height={1}
+          />
+        </div>
       </noscript>
     </>
   );
