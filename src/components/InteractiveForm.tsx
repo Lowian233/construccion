@@ -286,7 +286,6 @@ const InteractiveForm = ({ initialService }: InteractiveFormProps) => {
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
-          to_email: process.env.NEXT_PUBLIC_ADMIN_EMAIL,
           from_name: data.nombre,
           from_email: data.email,
           message: `
